@@ -12,5 +12,6 @@ mongoose.connect(process.env.MONGO_URI);
 app.use('/api/shops', require('./routes/shops'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/coupons', require('./routes/coupons'));
 
 app.listen(5000, () => console.log('Server running on 5000'));
