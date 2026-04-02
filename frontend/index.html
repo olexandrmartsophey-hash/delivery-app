@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shops</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<h1>Products</h1>
-<div id="products"></div>
+  <h1>Food Delivery</h1>
 
-<script type="module" src="./js/shop.js"></script>
+  <div class="controls">
+    <select id="sort">
+      <option value="">Sort by...</option>
+      <option value="price_asc">Price (Ascending)</option>
+      <option value="price_desc">Price (Descending)</option>
+      <option value="name">Name (A-Z)</option>
+    </select>
+
+    <select id="category">
+      <option value="">All Categories</option>
+      <option value="Burgers">Burgers</option>
+      <option value="Drinks">Drinks</option>
+      <option value="Desserts">Desserts</option>
+    </select>
+  </div>
+
+  <div id="products"></div>
+
+  <script type="module" src="./js/shop.js"></script>
 </body>
 </html>
