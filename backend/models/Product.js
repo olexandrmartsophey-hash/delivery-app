@@ -7,4 +7,4 @@ const ProductSchema = new mongoose.Schema({
   shopId: mongoose.Schema.Types.ObjectId
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model('Product', ProductSchema, 'products');
