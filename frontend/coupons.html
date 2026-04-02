@@ -22,47 +22,10 @@
   <main class="container">
     <h1>Available Coupons</h1>
     <div id="coupons-container" class="product-grid">
-      </div>
+      <p>Loading coupons...</p>
+    </div>
   </main>
 
-  <script type="module">
-    const API = 'https://delivery-app-efr7.onrender.com/api'; 
-    const container = document.getElementById('coupons-container');
-
-    async function loadCoupons() {
-      try {
-        const res = await fetch(`${API}/coupons`);
-        const coupons = await res.json();
-        
-        if (coupons.length === 0) {
-          container.innerHTML = "<p>No coupons available right now.</p>";
-          return;
-        }
-
-        coupons.forEach(c => {
-          const div = document.createElement('div');
-          div.className = 'product-card'; 
-          div.style = "text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #fff;";
-          
-          div.innerHTML = `
-            <h3>${c.name}</h3>
-            <p style="font-size: 1.2rem; font-weight: bold; color: #e67e22;">${c.code}</p>
-            <p>Discount: ${c.discount}%</p>
-            <button class="add-to-cart-btn" onclick="copyToClipboard('${c.code}')">Copy Code</button>
-          `;
-          container.appendChild(div);
-        });
-      } catch (err) {
-        console.error("Failed to load coupons", err);
-      }
-    }
-
-    window.copyToClipboard = (code) => {
-      navigator.clipboard.writeText(code);
-      alert('Coupon copied to clipboard! Use it in your Shopping Cart.'); 
-    };
-
-    loadCoupons();
-  </script>
+  <script type="module" src="./js/coupons.js"></script>
 </body>
 </html>
