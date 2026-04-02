@@ -1,4 +1,4 @@
-const API = 'https://delivery-app-efr7.onrender.com/';
+const API = 'https://delivery-app-efr7.onrender.com/api';
 
 export const getProducts = (params) => {
   return fetch(`${API}/products?${new URLSearchParams(params)}`)
