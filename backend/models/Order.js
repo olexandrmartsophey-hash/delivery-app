@@ -5,6 +5,8 @@ const OrderSchema = new mongoose.Schema({
   phone: String,
   address: String,
   items: Array,
+  totalPrice: Number, 
+  couponCode: String, 
   createdAt: { type: Date, default: Date.now }
 });
 
