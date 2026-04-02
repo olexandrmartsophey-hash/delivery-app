@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URI);
 
 app.use('/shops', require('./routes/shops'));
 app.use('/products', require('./routes/products'));
