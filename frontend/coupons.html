@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery App - Coupons</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="nav-logo">FastFood Delivery</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Shop</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="coupons.html" class="active">Coupons</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Available Coupons</h1>
+    <div id="coupons-container" class="product-grid">
+      </div>
+  </main>
+
+  <script type="module">
+    const API = 'https://delivery-app-efr7.onrender.com/api'; 
+    const container = document.getElementById('coupons-container');
+
+    async function loadCoupons() {
+      try {
+        const res = await fetch(`${API}/coupons`);
+        const coupons = await res.json();
+        
+        if (coupons.length === 0) {
+          container.innerHTML = "<p>No coupons available right now.</p>";
+          return;
+        }
+
+        coupons.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'product-card'; 
+          div.style = "text-align: center; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #fff;";
+          
+          div.innerHTML = `
+            <h3>${c.name}</h3>
+            <p style="font-size: 1.2rem; font-weight: bold; color: #e67e22;">${c.code}</p>
+            <p>Discount: ${c.discount}%</p>
+            <button class="add-to-cart-btn" onclick="copyToClipboard('${c.code}')">Copy Code</button>
+          `;
+          container.appendChild(div);
+        });
+      } catch (err) {
+        console.error("Failed to load coupons", err);
+      }
+    }
+
+    window.copyToClipboard = (code) => {
+      navigator.clipboard.writeText(code);
+      alert('Coupon copied to clipboard! Use it in your Shopping Cart.'); 
+    };
+
+    loadCoupons();
+  </script>
+</body>
+</html>
