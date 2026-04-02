@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000';
+const API = 'https://delivery-app-efr7.onrender.com/';
 
 export const getProducts = (params) => {
   return fetch(`${API}/products?${new URLSearchParams(params)}`)
